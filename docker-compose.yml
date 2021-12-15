@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  xmrig:
+    image: xmrig:6.16.2
+    container_name: xmrig
+    #environment:
+    #  - TZ=America/New_York
+    volumes:
+      - ./config.json:/xmrig/etc/config.json:ro
+      - ./log:/xmrig/log
+    command: ["xmrig", "--config=/xmrig/etc/config.json"]
+    restart: always
