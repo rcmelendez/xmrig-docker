@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: xmrig
+  name: xmrig
+  namespace: xmrig 
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: xmrig
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: xmrig
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - xmrig
+            topologyKey: "kubernetes.io/hostname"
+      containers:
+      - image: rcmelendez/xmrig:6.16.2
+        name: xmrig
+        command: ["xmrig"]
+        args: ["-c", "/xmrig/etc/config.json"]
+        resources:
+          limits:
+            memory: "4Gi"
+            cpu: "4"
+          requests:
+            memory: "2Gi"
+            cpu: "2"      
+        volumeMounts:
+        - name: config-volume
+          mountPath: /xmrig/etc
+      volumes:
+      - name: config-volume
+        configMap:
+          name: xmrig-config
