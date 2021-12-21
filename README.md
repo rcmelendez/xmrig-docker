@@ -1,11 +1,11 @@
 # XMRig miner image for Monero
-Monero (XMR) CPU miner packaged in a lightweight Docker image that you can easily deploy in a Kubernetes cluster.
+Monero (XMR) CPU miner packaged in a lightweight Docker image that you can easily deploy to a Kubernetes cluster.
 
 
 ## What is XMRig?
 [XMRig](https://xmrig.com/miner) is a high performance, open source, cross platform RandomX, KawPow, CryptoNight and AstroBWT unified CPU/GPU miner and RandomX benchmark. It supports [Monero](https://www.getmonero.org/), among other cryptocurrencies. 
 
-This Docker image was built with the latest XMRig version from source on Alpine Linux and it is only 16 MB in size. It's rootless, immutable, and supports your own donate level and timezone. You can easily deploy it as a standalone Docker container, or in a Kubernetes cluster in minutes.
+This Docker image was built with the latest XMRig version from source on Alpine Linux and it is only 16 MB in size. It's rootless, immutable, and supports your own donate level and timezone. You can easily deploy it as a standalone Docker container, or to a Kubernetes cluster in minutes.
 
 
 ## Quick reference
@@ -21,7 +21,7 @@ This Docker image was built with the latest XMRig version from source on Alpine 
 $ git clone https://github.com/rcmelendez/xmrig-docker.git
 ```
 
-**Step 2:** Edit the [`config.json`](https://github.com/rcmelendez/xmrig-docker/blob/main/config.json) file. Provide your pool, wallet address, and coin to mine. If you are feeling generous, set the `donate-level` bigger than 0:
+**Step 2:** Edit the [`config.json`](https://github.com/rcmelendez/xmrig-docker/blob/main/config.json) file. Provide your [pool](http://moneropools.com/), [wallet address](https://web.getmonero.org/downloads/), and coin to mine. If you are feeling generous, set the `donate-level` greater than 0:
 ```
 "coin": "XMR",
 "url": "gulf.moneroocean.stream:10128",
@@ -30,7 +30,7 @@ $ git clone https://github.com/rcmelendez/xmrig-docker.git
 ```
 For all the available options, visit [XMRig Config File](https://xmrig.com/docs/miner/config) documentation. 
 
-**Step 3:** Deploy the image as a standalone Docker container or in a Kubernetes cluster.
+**Step 3:** Deploy the image as a standalone Docker container or to a Kubernetes cluster.
 
 ### Docker
 ```
