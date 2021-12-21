@@ -1,5 +1,5 @@
 # xmrig-docker
-A Monero (XMR) miner packaged in a lightweight Docker image, ready to be deployed in a Kubernetes cluster.
+A Monero (XMR) miner packaged in a lightweight Docker image that you can easily deploy in a Kubernetes cluster.
 
 
 ## What is XMRig?
@@ -37,7 +37,7 @@ For all the available options, visit [XMRig Config File](https://xmrig.com/docs/
 $ docker run -dit --rm \
     --volume "$(pwd)"/config.json:/xmrig/etc/config.json:ro \
     --volume "$(pwd)"/log:/xmrig/log \
-    --name xmrig xmrig:6.16.2 \
+    --name xmrig rcmelendez/xmrig:6.16.2 \
     xmrig --config=/xmrig/etc/config.json
 ```
 If you prefer **Docker Compose**, edit the [`docker-compose.yml`](https://github.com/rcmelendez/xmrig-docker/blob/main/docker-compose.yml) manifest as needed and run:
