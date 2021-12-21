@@ -1,17 +1,17 @@
-# xmrig-docker
-A Monero (XMR) miner packaged in a lightweight Docker image that you can easily deploy in a Kubernetes cluster.
+# XMRig miner image for Monero
+Monero (XMR) CPU miner packaged in a lightweight Docker image that you can easily deploy in a Kubernetes cluster.
 
 
 ## What is XMRig?
 [XMRig](https://xmrig.com/miner) is a high performance, open source, cross platform RandomX, KawPow, CryptoNight and AstroBWT unified CPU/GPU miner and RandomX benchmark. It supports [Monero](https://www.getmonero.org/), among other cryptocurrencies. 
 
-This Docker image was built from source on Alpine Linux and it is only 16 MB in size. You can deploy it as a standalone Docker container, or in a Kubernetes cluster in minutes.
+This Docker image was built with the latest XMRig version from source on Alpine Linux and it is only 16 MB in size. It's rootless, immutable, and supports your own donate level and timezone. You can easily deploy it as a standalone Docker container, or in a Kubernetes cluster in minutes.
 
 
 ## Quick reference
 - **Maintained by**: [Roberto Meléndez](https://medium.com/@rcmelendez)
 - **Supported architectures**: `amd64`, `arm32v7`, `arm64v8`
-- **Supported tags**: `6.16.2`
+- **Supported tags**: `latest`, `6.16.2`
 
 
 ## How to use this image
@@ -37,7 +37,7 @@ For all the available options, visit [XMRig Config File](https://xmrig.com/docs/
 $ docker run -dit --rm \
     --volume "$(pwd)"/config.json:/xmrig/etc/config.json:ro \
     --volume "$(pwd)"/log:/xmrig/log \
-    --name xmrig rcmelendez/xmrig:6.16.2 \
+    --name xmrig rcmelendez/xmrig \
     xmrig --config=/xmrig/etc/config.json
 ```
 If you prefer **Docker Compose**, edit the [`docker-compose.yml`](https://github.com/rcmelendez/xmrig-docker/blob/main/docker-compose.yml) manifest as needed and run:
@@ -56,7 +56,7 @@ $ kubectl create configmap xmrig-config --from-file config.json -n xmrig
 ```
 **Step 3:** Edit the [`xmrig.yaml`](https://github.com/rcmelendez/xmrig-docker/blob/main/xmrig.yaml) file. Things you may want to modify include:
 - `replicas`: number of desired pods to be running.
-- `image:tag`: to view all available versions, go to the [Tags](https://hub.docker.com/r/rcmelendez/xmrig/tags) tab of this Docker Hub repo.
+- `image:tag`: to view all available versions, go to the [Tags](https://hub.docker.com/r/rcmelendez/xmrig/tags) tab of the Docker Hub repo.
 - `resources`: set appropriate values for `cpu` and `memory` requests/limits.
 - `affinity`: the manifest will schedule only one pod per node, if that's not the desired behavior, remove the `affinity` block.
 
