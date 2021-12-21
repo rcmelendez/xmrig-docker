@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   xmrig:
-    image: xmrig:6.16.2
+    image: rcmelendez/xmrig
     container_name: xmrig
     #environment:
     #  - TZ=America/New_York
