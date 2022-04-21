@@ -11,7 +11,7 @@ This Docker image was built with the latest XMRig version from source on Alpine 
 ## Quick reference
 - **Maintained by**: [Roberto Meléndez](https://medium.com/@rcmelendez)
 - **Supported architectures**: `amd64`, `arm32v7`, `arm64v8`
-- **Supported tags**: `latest`, `6.16.4`, `6.16.3`, `6.16.2`
+- **Supported tags**: `latest`, `6.17.0`, `6.16.4`, `6.16.3`, `6.16.2`
 
 
 ## How to use this image
